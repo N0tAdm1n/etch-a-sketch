@@ -1,5 +1,7 @@
-div {
-    border: 5px solid black;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .rowDiv {
@@ -9,11 +11,17 @@ div {
 
 .square {
     flex-grow: 1;
+    border: 2px solid black;
+}
+
+.blackBG {
+    background-color: black;
 }
 
 #container {
-    width: 500px;
-    height: 500px;
+    width: 496px;
+    height: 496px;
     display: flex;
     flex-direction: column;
+    border: 2px solid black;
 }

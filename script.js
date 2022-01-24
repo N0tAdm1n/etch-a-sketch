@@ -6,8 +6,16 @@ for(let i = 0; i < 8; i++) {
     for(let j = 0; j < 8; j++) {
         const div = document.createElement('div'); //single square
         div.classList.add('square');
-        div.textContent = `${i} ${j}`
+        // div.textContent = `${i} ${j}`
         rowDiv.appendChild(div);
     }
     container.appendChild(rowDiv);
 }
+
+function colorBlack() {
+    this.classList.add('blackBG');
+}
+
+const allSquares = Array.from( document.querySelectorAll('.square') ); //selects all the squares
+//adds a hover Event Listener to all squares
+allSquares.forEach(square => square.addEventListener('mouseover',colorBlack)); //doesn't work
