@@ -15,7 +15,14 @@ for(let i = 0; i < 8; i++) {
 function colorBlack() {
     this.classList.add('blackBG');
 }
+// removes the blackBG class from each square
+function clearGrid() {
+    allSquares.forEach( square => square.classList.remove('blackBG') );
+}    
 
 const allSquares = Array.from( document.querySelectorAll('.square') ); //selects all the squares
 //adds a hover Event Listener to all squares
-allSquares.forEach(square => square.addEventListener('mouseover',colorBlack)); //doesn't work
+allSquares.forEach(square => square.addEventListener('mouseover',colorBlack)); 
+
+const clearButton = document.querySelector('#clear'); 
+clearButton.addEventListener('click', clearGrid); // Clears the grid
