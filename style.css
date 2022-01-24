@@ -1,0 +1,19 @@
+div {
+    border: 5px solid black;
+}
+
+.rowDiv {
+    display: flex;
+    flex-grow: 1;
+}
+
+.square {
+    flex-grow: 1;
+}
+
+#container {
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
