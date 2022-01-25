@@ -16,16 +16,26 @@ function makeGrid(gridSize = 8) {
     }
     const allSquares = Array.from( document.querySelectorAll('.square') ); //selects all the squares
     //adds a hover Event Listener to all squares
-    allSquares.forEach(square => square.addEventListener('mouseover',colorBlack )); 
+    allSquares.forEach(square => square.addEventListener('mouseover',colorShade )); 
 }
 
 makeGrid();  //calls the grid funtion then the site is loaded first
 
 
-//functoin to color the squares black with opacity --- doesn't work
+//function to color the squares black 
 function colorBlack() {
-    // if(opacity < 1.0) opacity += 0.1;
     this.style.backgroundColor = `rgba(0, 0, 0, 1)`;
+}
+
+//function to color the squares shades of black
+function colorShade() {
+    this.style.backgroundColor = 'black';
+    if(this.style.opacity === '') {
+        this.style.opacity = '0';
+    }    
+    if( Number(this.style.opacity) < 1) {
+        this.style.opacity = `${ Number(this.style.opacity) + 0.1}`;
+    }
 }
 
 
