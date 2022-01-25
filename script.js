@@ -1,4 +1,6 @@
 const container = document.querySelector('#container');
+
+
 //makes a grid of 8x8
 function makeGrid(gridSize = 8) {
     for(let i = 0; i < gridSize; i++) {
@@ -14,27 +16,33 @@ function makeGrid(gridSize = 8) {
     }
     const allSquares = Array.from( document.querySelectorAll('.square') ); //selects all the squares
     //adds a hover Event Listener to all squares
-    allSquares.forEach(square => square.addEventListener('mouseover',randomColor )); 
+    allSquares.forEach(square => square.addEventListener('mouseover',colorBlack )); 
 }
 
 makeGrid();  //calls the grid funtion then the site is loaded first
 
+
+//functoin to color the squares black with opacity --- doesn't work
 function colorBlack() {
-    this.classList.add('blackBG');
+    // if(opacity < 1.0) opacity += 0.1;
+    this.style.backgroundColor = `rgba(0, 0, 0, 1)`;
 }
-// removes the blackBG class from each square
-function clearGrid() {
-    allSquares.forEach( square => square.classList.remove('blackBG') );
-}   
+
+
 //function to remove the grid from the dom 
 function removeGrid() {
     const allRowDiv = Array.from( document.querySelectorAll('.rowDiv'));
     allRowDiv.forEach( rowDiv => rowDiv.remove() );
 }
+
+
 //function for random color
 function randomColor() {
-    this.style.backgroundColor = randomRGB(); 
+    this.style.backgroundColor = randomRGB();
+    console.log(this.style); 
 }
+
+
 //function to generate random color in rgb
 function randomRGB() {
     let red = Math.floor( Math.random() * 255 ); 
@@ -43,11 +51,10 @@ function randomRGB() {
     return `rgb(${red}, ${green}, ${blue})`;
 }
 
+
 const clearButton = document.querySelector('#clear'); 
 clearButton.addEventListener('click', () => {
-    //clearGrid();  // Clears the grid
-    //gets a new grid Size from the user
+    gridSizeByUser = Number( prompt("Enter the grid size (<100) : ", 8) );//gets a new grid Size from the user
     removeGrid();
-    gridSizeByUser = Number( prompt("Enter the grid size (<100) : ", 8) );
     makeGrid(gridSizeByUser);
 }); 
