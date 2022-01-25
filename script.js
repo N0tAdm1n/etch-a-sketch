@@ -14,7 +14,7 @@ function makeGrid(gridSize = 8) {
     }
     const allSquares = Array.from( document.querySelectorAll('.square') ); //selects all the squares
     //adds a hover Event Listener to all squares
-    allSquares.forEach(square => square.addEventListener('mouseover',colorBlack)); 
+    allSquares.forEach(square => square.addEventListener('mouseover',randomColor )); 
 }
 
 makeGrid();  //calls the grid funtion then the site is loaded first
@@ -31,7 +31,17 @@ function removeGrid() {
     const allRowDiv = Array.from( document.querySelectorAll('.rowDiv'));
     allRowDiv.forEach( rowDiv => rowDiv.remove() );
 }
-
+//function for random color
+function randomColor() {
+    this.style.backgroundColor = randomRGB(); 
+}
+//function to generate random color in rgb
+function randomRGB() {
+    let red = Math.floor( Math.random() * 255 ); 
+    let green = Math.floor( Math.random() * 255 ); 
+    let blue = Math.floor( Math.random() * 255 ); 
+    return `rgb(${red}, ${green}, ${blue})`;
+}
 
 const clearButton = document.querySelector('#clear'); 
 clearButton.addEventListener('click', () => {
