@@ -1,7 +1,9 @@
+let mode = colorBlack;
+
 const container = document.querySelector('#container');
 
 
-//makes a grid of 8x8
+//makes a grid of gridSize x gridSize
 function makeGrid(gridSize = 8) {
     for(let i = 0; i < gridSize; i++) {
         const rowDiv = document.createElement('div'); //for a row
@@ -16,7 +18,7 @@ function makeGrid(gridSize = 8) {
     }
     const allSquares = Array.from( document.querySelectorAll('.square') ); //selects all the squares
     //adds a hover Event Listener to all squares
-    allSquares.forEach(square => square.addEventListener('mouseover',colorShade )); 
+    allSquares.forEach(square => square.addEventListener('mouseover', mode )); 
 }
 
 makeGrid();  //calls the grid funtion then the site is loaded first
@@ -47,7 +49,7 @@ function removeGrid() {
 
 
 //function for random color
-function randomColor() {
+function colorRainbow() {
     this.style.backgroundColor = randomRGB();
     console.log(this.style); 
 }
@@ -61,10 +63,36 @@ function randomRGB() {
     return `rgb(${red}, ${green}, ${blue})`;
 }
 
-
-const clearButton = document.querySelector('#clear'); 
-clearButton.addEventListener('click', () => {
+//makes a new grid
+function makeNewGrid() {
     gridSizeByUser = Number( prompt("Enter the grid size (<100) : ", 8) );//gets a new grid Size from the user
     removeGrid();
     makeGrid(gridSizeByUser);
+}
+
+const clearButton = document.querySelector('#clear'); 
+clearButton.addEventListener('click', () => {
+    makeNewGrid();
 }); 
+
+//selects the mode 
+function modeSelector() {
+    if(this.id === 'black') {
+        mode = colorBlack;
+        makeNewGrid();
+    } else if(this.id === 'rainbow') {
+        mode = colorRainbow;
+        makeNewGrid();
+    } else if(this.id === 'shade') {
+        mode = colorShade;
+        makeNewGrid();
+    }
+}
+
+
+const blackModeBtn = document.querySelector('#black');
+blackModeBtn.addEventListener('click', modeSelector);
+const rainbowModeBtn = document.querySelector('#rainbow');
+rainbowModeBtn.addEventListener('click', modeSelector);
+const shadeModeBtn = document.querySelector('#shade');
+shadeModeBtn.addEventListener('click', modeSelector);
