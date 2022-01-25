@@ -70,10 +70,6 @@ function makeNewGrid() {
     makeGrid(gridSizeByUser);
 }
 
-const clearButton = document.querySelector('#clear'); 
-clearButton.addEventListener('click', () => {
-    makeNewGrid();
-}); 
 
 //selects the mode 
 function modeSelector() {
@@ -89,7 +85,9 @@ function modeSelector() {
     }
 }
 
-
+//selects all the buttons
+const clearButton = document.querySelector('#clear'); 
+clearButton.addEventListener('click', makeNewGrid); 
 const blackModeBtn = document.querySelector('#black');
 blackModeBtn.addEventListener('click', modeSelector);
 const rainbowModeBtn = document.querySelector('#rainbow');
