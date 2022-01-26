@@ -4,7 +4,7 @@ const container = document.querySelector('#container');
 
 
 //makes a grid of gridSize x gridSize
-function makeGrid(gridSize = 8) {
+function makeGrid(gridSize = 16) {
     for(let i = 0; i < gridSize; i++) {
         const rowDiv = document.createElement('div'); //for a row
         rowDiv.classList.add('rowDiv');
@@ -29,6 +29,20 @@ function colorBlack() {
     this.style.backgroundColor = `rgba(0, 0, 0, 1)`;
 }
 
+//function for random color
+function colorRainbow() {
+    this.style.backgroundColor = randomRGB();
+    console.log(this.style); 
+}
+
+//function to generate random color in rgb
+function randomRGB() {
+    let red = Math.floor( Math.random() * 255 ); 
+    let green = Math.floor( Math.random() * 255 ); 
+    let blue = Math.floor( Math.random() * 255 ); 
+    return `rgb(${red}, ${green}, ${blue})`;
+}
+
 //function to color the squares shades of black
 function colorShade() {
     this.style.backgroundColor = 'black';
@@ -48,20 +62,8 @@ function removeGrid() {
 }
 
 
-//function for random color
-function colorRainbow() {
-    this.style.backgroundColor = randomRGB();
-    console.log(this.style); 
-}
 
 
-//function to generate random color in rgb
-function randomRGB() {
-    let red = Math.floor( Math.random() * 255 ); 
-    let green = Math.floor( Math.random() * 255 ); 
-    let blue = Math.floor( Math.random() * 255 ); 
-    return `rgb(${red}, ${green}, ${blue})`;
-}
 
 //makes a new grid
 function makeNewGrid() {
