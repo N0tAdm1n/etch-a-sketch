@@ -10,7 +10,6 @@ function makeGrid(gridSize = 16) {
     for (let j = 0; j < gridSize; j++) {
       const div = document.createElement("div"); //single squaresda
       div.classList.add("square");
-      // div.textContent = `${i} ${j}`
       rowDiv.appendChild(div);
     }
     container.appendChild(rowDiv);
@@ -20,12 +19,18 @@ function makeGrid(gridSize = 16) {
 
 makeGrid(); //calls the grid funtion then the site is loaded first
 
-// function for selecting each square in the grid and adding the event listener to them with the right mode
+// function for selecting each square in the grid and adding the event listener to them with the right 
 function colorGrid() {
   const allSquares = Array.from(document.querySelectorAll(".square")); //selects all the squares
   //adds a hover Event Listener to all squares
   allSquares.forEach((square) => square.addEventListener("mouseover", mode));
 }
+//function to remove event listener from the squares
+function removeListener() {
+  const allSquares = Array.from(document.querySelectorAll(".square"));
+  allSquares.forEach(square => square.removeEventListener('mouseover', mode));
+} 
+
 //function to color the squares black
 function colorBlack() {
   this.style.backgroundColor = `rgba(0, 0, 0, 1)`;
@@ -72,12 +77,15 @@ function makeNewGrid() {
 function modeSelector() {
   if (this.id === "black") {
     mode = colorBlack;
+    removeListener();
     colorGrid();
   } else if (this.id === "rainbow") {
     mode = colorRainbow;
+    removeListener();
     colorGrid();
   } else if (this.id === "shade") {
     mode = colorShade;
+    removeListener();
     colorGrid();
   }
 }
