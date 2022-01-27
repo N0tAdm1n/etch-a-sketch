@@ -56,13 +56,13 @@ function randomRGB() {
 //function to color the squares shades of black
 function colorShade() {
   this.style.backgroundColor = "black";
-  if (this.style.opacity === "" || !this.classList.contains("shade")) {
+  if (this.style.opacity === "" || !(this.classList.contains("shade"))) {
     this.style.opacity = "0";
+    this.classList.add("shade");
   }
   if (Number(this.style.opacity) < 1) {
     this.style.opacity = `${Number(this.style.opacity) + 0.1}`;
   }
-  this.classList.add("shade");
 }
 
 //function to remove the grid from the dom
@@ -81,16 +81,16 @@ function makeNewGrid() {
 //selects the mode
 function modeSelector() {
   if (this.id === "black") {
-    mode = colorBlack;
     removeListener();
+    mode = colorBlack;
     colorGrid();
   } else if (this.id === "rainbow") {
-    mode = colorRainbow;
     removeListener();
+    mode = colorRainbow;
     colorGrid();
   } else if (this.id === "shade") {
-    mode = colorShade;
     removeListener();
+    mode = colorShade;
     colorGrid();
   }
 }
