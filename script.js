@@ -19,7 +19,7 @@ function makeGrid(gridSize = 16) {
 
 makeGrid(); //calls the grid funtion then the site is loaded first
 
-// function for selecting each square in the grid and adding the event listener to them with the right 
+// function for selecting each square in the grid and adding the event listener to them with the right
 function colorGrid() {
   const allSquares = Array.from(document.querySelectorAll(".square")); //selects all the squares
   //adds a hover Event Listener to all squares
@@ -28,17 +28,21 @@ function colorGrid() {
 //function to remove event listener from the squares
 function removeListener() {
   const allSquares = Array.from(document.querySelectorAll(".square"));
-  allSquares.forEach(square => square.removeEventListener('mouseover', mode));
-} 
+  allSquares.forEach((square) => square.removeEventListener("mouseover", mode));
+}
 
 //function to color the squares black
 function colorBlack() {
+  this.style.opacity = "1";
   this.style.backgroundColor = `rgba(0, 0, 0, 1)`;
+  this.classList.remove("shade");
 }
 
 //function for random color
 function colorRainbow() {
+  this.style.opacity = "1";
   this.style.backgroundColor = randomRGB();
+  this.classList.remove("shade");
 }
 
 //function to generate random color in rgb
@@ -52,12 +56,13 @@ function randomRGB() {
 //function to color the squares shades of black
 function colorShade() {
   this.style.backgroundColor = "black";
-  if (this.style.opacity === "") {
+  if (this.style.opacity === "" || !this.classList.contains("shade")) {
     this.style.opacity = "0";
   }
   if (Number(this.style.opacity) < 1) {
     this.style.opacity = `${Number(this.style.opacity) + 0.1}`;
   }
+  this.classList.add("shade");
 }
 
 //function to remove the grid from the dom
